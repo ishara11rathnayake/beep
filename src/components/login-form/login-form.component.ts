@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth/auth.service';
+
+import { Account } from '../../models/accounts/account.interface';
+import { LoginResponse } from '../../models/login/login-response.interface';
 
 /**
  * Generated class for the LoginFormComponent component.
@@ -13,11 +17,40 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginFormComponent {
 
-  constructor(private navCtrl: NavController) {
+  account = {} as Account;   
+  @Output() loginStatus: EventEmitter<LoginResponse>;
+
+  constructor(private auth: AuthService, private navCtrl: NavController) {
+    this.loginStatus = new EventEmitter<LoginResponse>();
   }
 
-  navigateToPage(pageName: string){
-    pageName === 'TabsPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName);
+  async login(){
+
+    const loginResponse = await this.auth.signInWithEmailAndPassword(this.account);
+    this.loginStatus.emit(loginResponse);
+    // try{
+    //   const result: LoginResponse = { 
+    //     result: await this.afAuth.auth.signInWithEmailAndPassword(this.account.email, this.account.password)
+    //   }
+    //   this.loginStatus.emit(result);
+    // }
+    // catch(e){
+    //   console.error(e);
+
+    //   const error: LoginResponse = {
+    //     error: e
+    //   }
+    //   this.loginStatus.emit(error);
+
+    // }
+  }
+
+  // navigateToPage(pageName: string){
+  //   pageName === 'TabsPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName);
+  // }
+
+  navigateToRegisterPage(){
+    this.navCtrl.push('RegisterPage');
   }
 
 }
