@@ -1,25 +1,28 @@
-import { User } from '../../models/user/user.interface';
+import { Profile } from '../../models/profile/profile.interface';
 
-const userList: User[] = [
+const userList: Profile[] = [
     {
         firstName: 'Ishara',
         lastName: 'Rathnayake',
         email: 'ishara11rathnayake@gmail.com',
-        avatar: ''
+        avatar: '',
+        dateOfBirth: new Date()
     },
 
     {
         firstName: 'Sandalu',
         lastName: 'Kalpanee',
         email: 'sandalukalpanee@gmail.com',
-        avatar: ''
+        avatar: '',
+        dateOfBirth: new Date()
     },
 
     {
         firstName: 'Lakshan',
         lastName: 'karunathilake',
         email: 'elakshankarunathilake@gmail.com',
-        avatar: ''
+        avatar: '',
+        dateOfBirth: new Date()
     }
 
 ]

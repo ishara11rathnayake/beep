@@ -1,5 +1,5 @@
 import { Message } from '../../models/messages/message.interface';
-import { USER_LIST } from '../users/user.mocks';
+import {USER_LIST } from '../profiles/profiles.mocks';
 
 const userList = USER_LIST;
 const messageList: Message[] = [];
