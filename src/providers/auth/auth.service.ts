@@ -18,6 +18,10 @@ export class AuthService {
     
   }
 
+  getAuthenticatedUser() {
+    return this.auth.authState;
+  }
+
   async createUserWithEmailAndPassword(account: Account){
     try{
       return <LoginResponse>{
